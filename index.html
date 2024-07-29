@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de Tableau</title>
+    <style>
+        @font-face {
+            font-family: 'TableauBook';
+            src: url('https://example.com/path/to/TableauBook.ttf');
+            /* Asegúrate de proporcionar la URL correcta de la fuente */
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'TableauBook', Arial, sans-serif;
+            /* Fuente predeterminada */
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #454545;
+            /* Mismo color de fondo que la página */
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header img {
+            height: 40px;
+            /* Altura de la imagen, ajusta según sea necesario */
+        }
+
+        .header-text {
+            color: white;
+            font-size: 18px;
+            font-family: 'Optima', Arial, sans-serif;
+            font-weight: bold;
+            margin-left: 20px;
+            /* Espacio entre el texto y la imagen */
+        }
+
+        .spacer {
+            height: 70px;
+            /* Altura del espacio después del encabezado */
+            width: 80%;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+            width: 80%;
+            /* Para que los botones ocupen todo el ancho del contenedor */
+        }
+
+        .buttons button {
+            background-color: #10748A;
+            /* Fondo gris Oxford */
+            color: white;
+            /* Letras blancas */
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            /* Tamaño de letra más pequeño */
+            border-radius: 5px;
+            flex: 1;
+            /* Para que todos los botones tengan el mismo tamaño */
+            max-width: 200px;
+            /* Ancho máximo de cada botón */
+            font-family: 'TableauBook', Arial, sans-serif;
+            /* Fuente específica para los botones */
+        }
+
+        .tableauContainer {
+            border: 2px solid #ADD8E6;
+            /* Color azul claro */
+            padding: 10px;
+            background-color: white;
+            width: 90%;
+            height: 80%;
+            max-width: 1600px;
+            max-height: 900px;
+            margin-top: 10px;
+        }
+
+        .tableauPlaceholder {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tableauViz {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-text">| :: Desarrollo económico y social con perspectiva de género a través del Arte Textil en
+            Yucatán</div>
+        <img src="Imagenes/Pleca_Bordado_Blanco.png" alt="Pleca Bordado">
+    </div>
+    <div class="spacer"></div>
+    <div class="buttons">
+        <button onclick="loadViz('mapeoActores')">Mapeo de Actores</button>
+        <button onclick="loadViz('ceremoniasCicloVida')">Ceremonias y Ciclo de Vida</button>
+        <button onclick="loadViz('puntadas')">Puntadas</button>
+        <button onclick="loadViz('transmisionBordado')">Transmisión del Bordado</button>
+    </div>
+    <div class="tableauContainer">
+        <div class="tableauPlaceholder" id="tableauVizContainer"></div>
+    </div>
+    <script type="text/javascript">
+        var vizzes = {
+            mapeoActores: {
+                id: 'viz1722066678379',
+                url: 'https://public.tableau.com/views/MapeodeActores_17218503918000/MapeodeActores',
+                img: 'https://public.tableau.com/static/images/Ma/MapeodeActores_17218503918000/MapeodeActores/1.png'
+            },
+            ceremoniasCicloVida: {
+                id: 'viz1722066908028',
+                url: 'https://public.tableau.com/views/CeremoniasyCiclodeVida_17218546955320/CeremoniasyCiclodeVida',
+                img: 'https://public.tableau.com/static/images/Ce/CeremoniasyCiclodeVida_17218546955320/CeremoniasyCiclodeVida/1.png'
+            },
+            puntadas: {
+                id: 'viz1722066951309',
+                url: 'https://public.tableau.com/views/Puntadas/Dashboard1',
+                img: 'https://public.tableau.com/static/images/Pu/Puntadas/Dashboard1/1.png'
+            },
+            transmisionBordado: {
+                id: 'viz1722066997616',
+                url: 'https://public.tableau.com/views/TransmisindelBordadoMaya_17218551056040/Transmisin',
+                img: 'https://public.tableau.com/static/images/Tr/TransmisindelBordadoMaya_17218551056040/Transmisin/1.png'
+            }
+        };
+
+        function loadViz(vizKey) {
+            var vizInfo = vizzes[vizKey];
+            var container = document.getElementById('tableauVizContainer');
+            container.innerHTML = `
+                <div class='tableauPlaceholder' id='${vizInfo.id}' style='position: relative'>
+                    <noscript>
+                        <a href='#'><img alt='${vizKey}' src='${vizInfo.img}' style='border: none' /></a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='${vizInfo.url.split('/').slice(-2).join('/')}' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='${vizInfo.img}' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='es-ES' />
+                    </object>
+                </div>
+            `;
+            // Agrega el script para cargar el viz de Tableau
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            document.body.appendChild(scriptElement);
+        }
+
+        // Load default viz
+        window.onload = function () {
+            loadViz('puntadas');
+        };
+    </script>
+</body>
+
+</html>
