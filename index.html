@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tablero de Tableau</title>
+    <title>Arte Textil en Yucatán</title>
     <style>
         @font-face {
             font-family: 'TableauBook';
@@ -86,6 +86,11 @@
             /* Fuente específica para los botones */
         }
 
+        .buttons button:first-child {
+            background-color: #FFA500;
+            /* Color diferente para el primer botón */
+        }
+
         .tableauContainer {
             border: 2px solid #ADD8E6;
             /* Color azul claro */
@@ -113,12 +118,14 @@
 
 <body>
     <div class="header">
-        <div class="header-text">| :: Desarrollo económico y social con perspectiva de género a través del Arte Textil en
+        <div class="header-text">| :: Desarrollo económico y social con perspectiva de género a través del Arte Textil
+            en
             Yucatán</div>
         <img src="Imagenes/Pleca_Bordado_Blanco.png" alt="Pleca Bordado">
     </div>
     <div class="spacer"></div>
     <div class="buttons">
+        <button onclick="loadViz('talleresPrimerMomento')">Talleres Primer Momento</button>
         <button onclick="loadViz('mapeoActores')">Mapeo de Actores</button>
         <button onclick="loadViz('ceremoniasCicloVida')">Ceremonias y Ciclo de Vida</button>
         <button onclick="loadViz('puntadas')">Puntadas</button>
@@ -129,6 +136,11 @@
     </div>
     <script type="text/javascript">
         var vizzes = {
+            talleresPrimerMomento: {
+                id: 'viz1722913539665',
+                url: 'https://public.tableau.com/views/AsistenciaArteTextil/Dashboard1',
+                img: 'https://public.tableau.com/static/images/As/AsistenciaArteTextil/Dashboard1/1.png'
+            },
             mapeoActores: {
                 id: 'viz1722066678379',
                 url: 'https://public.tableau.com/views/MapeodeActores_17218503918000/MapeodeActores',
