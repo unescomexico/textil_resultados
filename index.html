@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arte Textil en Yucatán</title>
+    <title>Tablero de Tableau</title>
     <style>
         @font-face {
             font-family: 'TableauBook';
@@ -86,9 +86,10 @@
             /* Fuente específica para los botones */
         }
 
-        .buttons button:first-child {
+        .buttons button:first-child,
+        .buttons button:nth-child(2) {
             background-color: #FFA500;
-            /* Color diferente para el primer botón */
+            /* Color diferente para los dos primeros botones */
         }
 
         .tableauContainer {
@@ -126,6 +127,7 @@
     <div class="spacer"></div>
     <div class="buttons">
         <button onclick="loadViz('talleresPrimerMomento')">Talleres Primer Momento</button>
+        <button onclick="loadViz('talleresSegundoMomento')">Talleres Segundo Momento</button>
         <button onclick="loadViz('mapeoActores')">Mapeo de Actores</button>
         <button onclick="loadViz('ceremoniasCicloVida')">Ceremonias y Ciclo de Vida</button>
         <button onclick="loadViz('puntadas')">Puntadas</button>
@@ -140,6 +142,11 @@
                 id: 'viz1722913539665',
                 url: 'https://public.tableau.com/views/AsistenciaArteTextil/Dashboard1',
                 img: 'https://public.tableau.com/static/images/As/AsistenciaArteTextil/Dashboard1/1.png'
+            },
+            talleresSegundoMomento: {
+                id: 'viz1723056191049',
+                url: 'https://public.tableau.com/views/AsistenciaTalleresRegionales/AsistenciaPrimerMomento',
+                img: 'https://public.tableau.com/static/images/As/AsistenciaTalleresRegionales/AsistenciaPrimerMomento/1.png'
             },
             mapeoActores: {
                 id: 'viz1722066678379',
