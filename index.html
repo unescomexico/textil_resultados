@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tablero de Tableau</title>
+    <title>Resultados Arte Textil</title>
     <style>
         @font-face {
             font-family: 'TableauBook';
@@ -86,10 +86,15 @@
             /* Fuente específica para los botones */
         }
 
-        .buttons button:first-child,
-        .buttons button:nth-child(2) {
-            background-color: #FFA500;
-            /* Color diferente para los dos primeros botones */
+        .buttons button.special {
+            background-color: #8a9a9f;
+            /* Color morado para el botón "Acerca del proyecto" */
+            font-weight: bold;
+        }
+
+        .buttons button.yellow {
+            background-color: #efb810;
+            /* Color amarillo */
         }
 
         .tableauContainer {
@@ -126,8 +131,9 @@
     </div>
     <div class="spacer"></div>
     <div class="buttons">
-        <button onclick="loadViz('talleresPrimerMomento')">Talleres Primer Momento</button>
-        <button onclick="loadViz('talleresSegundoMomento')">Talleres Segundo Momento</button>
+        <button class="special" onclick="loadViz('acercaDelProyecto')">Acerca del proyecto</button>
+        <button class="yellow" onclick="loadViz('talleresPrimerMomento')">Talleres Primer Momento</button>
+        <button class="yellow" onclick="loadViz('talleresSegundoMomento')">Talleres Segundo Momento</button>
         <button onclick="loadViz('mapeoActores')">Mapeo de Actores</button>
         <button onclick="loadViz('ceremoniasCicloVida')">Ceremonias y Ciclo de Vida</button>
         <button onclick="loadViz('puntadas')">Puntadas</button>
@@ -138,6 +144,11 @@
     </div>
     <script type="text/javascript">
         var vizzes = {
+            acercaDelProyecto: {
+                id: 'viz1723085752044',
+                url: 'https://public.tableau.com/views/ActividadesArteTextil/Dashboard1',
+                img: 'https://public.tableau.com/static/images/Ac/ActividadesArteTextil/Dashboard1/1.png'
+            },
             talleresPrimerMomento: {
                 id: 'viz1722913539665',
                 url: 'https://public.tableau.com/views/AsistenciaArteTextil/Dashboard1',
@@ -195,16 +206,16 @@
                     </object>
                 </div>
             `;
-            // Agrega el script para cargar el viz de Tableau
+            // Agrega el script para cargar el viz
             var scriptElement = document.createElement('script');
             scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-            document.body.appendChild(scriptElement);
+            document.getElementById(vizInfo.id).getElementsByTagName('object')[0].parentNode.insertBefore(scriptElement, null);
         }
 
-        // Load default viz
-        window.onload = function () {
-            loadViz('puntadas');
-        };
+        // Cargar el viz "Acerca del proyecto" por defecto al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            loadViz('acercaDelProyecto');
+        });
     </script>
 </body>
 
