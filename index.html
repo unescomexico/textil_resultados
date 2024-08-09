@@ -16,11 +16,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
             font-family: 'TableauBook', Arial, sans-serif;
-            /* Fuente predeterminada */
+            height: 100vh;
         }
 
         .header {
@@ -29,7 +28,6 @@
             justify-content: space-between;
             align-items: center;
             background-color: #454545;
-            /* Mismo color de fondo que la página */
             padding: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: fixed;
@@ -40,72 +38,60 @@
 
         .header img {
             height: 40px;
-            /* Altura de la imagen, ajusta según sea necesario */
         }
 
         .header-text {
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             font-family: 'Optima', Arial, sans-serif;
             font-weight: bold;
-            margin-left: 20px;
-            /* Espacio entre el texto y la imagen */
+            margin-left: 10px;
         }
 
         .spacer {
             height: 70px;
-            /* Altura del espacio después del encabezado */
-            width: 80%;
+            width: 100%;
         }
 
         .buttons {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 5px;
-            width: 80%;
-            /* Para que los botones ocupen todo el ancho del contenedor */
+            margin: 10px 0;
+            width: 100%;
+            padding: 0 10px;
         }
 
         .buttons button {
             background-color: #10748A;
-            /* Fondo gris Oxford */
             color: white;
-            /* Letras blancas */
             border: none;
-            padding: 10px 20px;
+            padding: 10px;
             margin: 5px;
             cursor: pointer;
             font-size: 14px;
-            /* Tamaño de letra más pequeño */
             border-radius: 5px;
-            flex: 1;
-            /* Para que todos los botones tengan el mismo tamaño */
+            flex: 1 1 45%;
             max-width: 200px;
-            /* Ancho máximo de cada botón */
             font-family: 'TableauBook', Arial, sans-serif;
-            /* Fuente específica para los botones */
         }
 
         .buttons button.special {
             background-color: #8a9a9f;
-            /* Color morado para el botón "Acerca del proyecto" */
             font-weight: bold;
         }
 
         .buttons button.yellow {
             background-color: #efb810;
-            /* Color amarillo */
         }
 
         .tableauContainer {
             border: 2px solid #ADD8E6;
-            /* Color azul claro */
             padding: 10px;
             background-color: white;
-            width: 90%;
-            height: 80%;
+            width: 95%;
             max-width: 1600px;
-            max-height: 900px;
+            height: calc(100vh - 150px);
             margin-top: 10px;
         }
 
@@ -119,14 +105,60 @@
             width: 100%;
             height: 100%;
         }
+
+        @media (max-width: 768px) {
+            .header-text {
+                font-size: 14px;
+                margin-left: 5px;
+            }
+
+            .header img {
+                height: 30px;
+            }
+
+            .spacer {
+                height: 50px;
+            }
+
+            .buttons button {
+                font-size: 12px;
+                padding: 8px;
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .tableauContainer {
+                height: calc(100vh - 120px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-text {
+                font-size: 12px;
+            }
+
+            .header img {
+                height: 25px;
+            }
+
+            .spacer {
+                height: 40px;
+            }
+
+            .buttons button {
+                font-size: 12px;
+                padding: 6px;
+                margin: 3px 0;
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="header">
         <div class="header-text">| :: Desarrollo económico y social con perspectiva de género a través del Arte Textil
-            en
-            Yucatán</div>
+            en Yucatán</div>
         <img src="Imagenes/Pleca_Bordado_Blanco.png" alt="Pleca Bordado">
     </div>
     <div class="spacer"></div>
@@ -206,7 +238,6 @@
                     </object>
                 </div>
             `;
-            // Agrega el script para cargar el viz
             var scriptElement = document.createElement('script');
             scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
             document.getElementById(vizInfo.id).getElementsByTagName('object')[0].parentNode.insertBefore(scriptElement, null);
